@@ -5,9 +5,6 @@ It discovers the equipment configured for each pool and presents compatible
 HomeKit accessories for pool temperature, heaters, solar heating, channels,
 valves, lighting zones, favourites, and pool/spa selection.
 
-This project is currently a release candidate. It has not been published to
-npm; install it directly from this GitHub repository for testing.
-
 ## Requirements
 
 - Homebridge 2.0 or later
@@ -33,29 +30,23 @@ email address and password.
 Treat the code as a password. The plugin puts it only in API request bodies and
 does not include it in log or error messages.
 
-## Install from GitHub
+## Install
 
 First create a Homebridge backup. If you already use another ConnectMyPool
 plugin, disable or remove it before continuing to avoid duplicate accessories.
 
-On an official Homebridge Raspberry Pi or Debian/Ubuntu installation, connect
-over SSH and build a fixed installation package from this repository:
+In the Homebridge UI:
+
+1. Open **Plugins**.
+2. Search for `@nickbeattie/homebridge-connect-my-pool`.
+3. Select **Install**.
+4. Open the plugin settings, add your pool, and restart Homebridge.
+
+On an official Homebridge Raspberry Pi or Debian/Ubuntu installation, you can
+instead install it over SSH:
 
 ```sh
-git clone https://github.com/nickbeattie/homebridge-connect-my-pool.git
-cd homebridge-connect-my-pool
-npm ci
-npm run check
-npm pack
-
-sudo npm --prefix /var/lib/homebridge install \
-  ./nickbeattie-homebridge-connect-my-pool-0.1.0.tgz
-```
-
-If you run the install command from the terminal built into Homebridge UI,
-omit `sudo`. Restart Homebridge after installation:
-
-```sh
+sudo hb-service add @nickbeattie/homebridge-connect-my-pool
 sudo hb-service restart
 ```
 
@@ -69,20 +60,6 @@ You should see the plugin load, register the `ConnectMyPool` platform, discover
 your configured equipment, and report that each pool is ready. Pool API Codes
 must never appear in the logs.
 
-To update later, enter the cloned repository and rebuild the package:
-
-```sh
-git pull --ff-only
-npm ci
-npm run check
-npm pack
-
-sudo npm --prefix /var/lib/homebridge install \
-  ./nickbeattie-homebridge-connect-my-pool-0.1.0.tgz
-
-sudo hb-service restart
-```
-
 To remove the plugin:
 
 ```sh
@@ -91,9 +68,6 @@ sudo npm --prefix /var/lib/homebridge uninstall \
 
 sudo hb-service restart
 ```
-
-`hb-service add` cannot install this release candidate because it accepts
-published npm package names only.
 
 ## Configure
 

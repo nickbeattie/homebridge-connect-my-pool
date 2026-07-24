@@ -2,8 +2,10 @@
   "name": "@nickbeattie/homebridge-connect-my-pool",
   "displayName": "Homebridge ConnectMyPool",
   "version": "0.1.0",
-  "private": true,
   "description": "Homebridge 2 integration for AstralPool ConnectMyPool systems.",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nickbeattie/homebridge-connect-my-pool.git"
@@ -42,7 +44,7 @@
     "typecheck": "tsc -p tsconfig.test.json",
     "check": "npm run lint && npm run typecheck && npm run test && npm run build",
     "package:check": "npm pack --dry-run",
-    "prepare": "npm run build",
+    "prepack": "npm run build",
     "prepublishOnly": "npm run check"
   },
   "dependencies": {},
